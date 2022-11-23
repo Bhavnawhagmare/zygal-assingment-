@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<style>
+div,span {display: block; min-width: 300px; min-height: 100px;}
+div {
+width: 50%; height: 300px;
+float: left;
+}
+.button {
+width: 50%; height: 100px;
+backgroud: none;
+border: solid 1px red;
+float: left;
+}
+.red {
+background-color: red;
+}.yellow {
+background-color: yellow;
+}.orange {
+background-color: orange;
+}.green {
+background-color: green;
+}
+</style>
+<body>
+
+<div id="one" class=" red">1</div>
+<div id="two" class="yellow">2</div>
+<span onclick="anticlockwise(this, 'red')" class="button anticlockwise">Anticlockwise</span>
+<span onclick="clockwise(this, 'red')" class="button clockwise">Clockwise</span>
+<div id="three" class=" orange">3</div>
+<div id="four" class=" green">4</div> 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+var a = jQuery('div')
+console.log(a);
+var  arr = [];
+
+
+for (let i = 0; i < a.length; i++) {
+    classnamediv = a[i].className;
+    arr.push(classnamediv);
+}
+
+
+function clockwise(element, color) {
+    const rotate = (arr, count = 1) => {
+      return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
+    };
+    output = rotate(arr, 1);
+    console.log(output);
+
+    $('div').removeClass();
+
+    output.forEach(function (item, index) {
+        $(a[index]).addClass(item)
+        console.log(item, index);
+    });
+    arr = [];
+    for (let i = 0; i < a.length; i++) {
+        classnamediv = a[i].className;
+        arr.push(classnamediv);
+    
+    }
+}
+
+
+function anticlockwise(element, color) {
+    k = -1;
+    const rotate = (arr, count = k) => {
+      return [...arr.slice(count, arr.length), ...arr.slice(0, -1)];
+    };
+    output = rotate(arr, 1);
+    console.log(output);
+
+    $('div').removeClass();
+
+    output.forEach(function (item, index) {
+        $(a[index]).addClass(item)
+        console.log(item, index);
+    });
+    arr = [];
+    for (let i = 0; i < a.length; i++) {
+        classnamediv = a[i].className;
+        arr.push(classnamediv);
+    
+    }
+}
+
+</script>
+
+</body>
+</html>
